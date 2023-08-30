@@ -11,7 +11,7 @@ using std::cin;
 using std::vector;
 #include <cstddef>
 using std::size_t;
-
+#include <casssert> // for assert
 
 // userPause
 // Wait for user to press ENTER: read all chars through first newline.
@@ -29,6 +29,8 @@ int sumTwo(const vector<int> & v,
            size_t idx1,
            size_t idx2)
 {
+    assert(idx1 < v.size()); // needs to be true or there is a bug in the program
+    assert(idx2 < v.size()); // needs to be true or there is a bug in the program
     return v[idx1] + v[idx2];
 }
 
@@ -42,7 +44,7 @@ int main()
 
     // Try sumTwo calls - one with an index out of range
     cout << "Sum #1: " << sumTwo(data, 0, 2) << endl;    // Okay
-    cout << "Sum #2: " << sumTwo(data, 0, 999) << endl;  // BAD!!!
+    cout << "Sum #2: " << sumTwo(data, 0, 999) << endl;  // BAD!!! - undefined behavior
     cout << endl;
 
     // Wait for user
